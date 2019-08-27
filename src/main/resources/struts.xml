@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <constant name="struts.devMode" value="true" />
+
+    <package name="basicstruts2" extends="struts-default">
+        <action name="index">
+            <result>/index.jsp</result>
+        </action>
+
+        <action name="new-event" class="com.exam.action.NewEventAction" method="form">
+            <result name="input">/new-event.jsp</result>
+        </action>
+        <action name="create-new-event" class="com.exam.action.NewEventAction" method="create">
+            <result name="input">/new-event.jsp</result>
+            <result type="chain" name="success">list-event</result>
+        </action>
+        <action name="list-event" class="com.exam.action.NewEventAction" method="list">
+            <result name="input">/events.jsp</result>
+        </action>
+        <action name="edit-event" class="com.exam.action.NewEventAction" method="edit">
+            <result name="input">/edit-event.jsp</result>
+        </action>
+        <action name="update-event" class="com.exam.action.NewEventAction" method="update">
+            <result name="input">/edit-event.jsp</result>
+            <result type="chain" name="success">list-event</result>
+        </action>
+        <action name="delete-event" class="com.exam.action.NewEventAction" method="delete">
+            <result type="chain" name="success">list-event</result>
+        </action>
+
+    </package>
+</struts>
